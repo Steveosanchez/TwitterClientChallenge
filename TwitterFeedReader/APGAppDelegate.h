@@ -12,4 +12,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (NSString *)documentsPath;
+- (NSString *)cachePath;
+
++ (APGAppDelegate *)appDelegate;
+
 @end

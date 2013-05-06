@@ -12,7 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[CPTOperationAndRunLoopManager sharedManager] addObserver:self forKeyPath:@"networkInUse" options:NSKeyValueObservingOptionInitial context:nil];
+    
     return YES;
 }
 							
@@ -41,6 +42,50 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+#pragma mark -
+#pragma mark KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    
+    if ([keyPath isEqual:@"networkInUse"]) {
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = [CPTOperationAndRunLoopManager sharedManager].networkInUse;
+    }
+}
+
+#pragma mark - Convenience methods
+
++ (APGAppDelegate *)appDelegate{
+    return (APGAppDelegate *)[[UIApplication sharedApplication] delegate];
+}
+
+
+
+#pragma mark -
+#pragma mark File Paths
+
+- (NSString *)documentsPath{
+    NSURL *documentsURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [documentsURL path];
+}
+
+- (NSString *)cachePath{
+    NSURL *cacheURL = [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
+    return [cacheURL path];
+}
+
+
+#pragma mark - 
+#pragma mark Application URL Handeling
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return YES;
 }
 
 @end

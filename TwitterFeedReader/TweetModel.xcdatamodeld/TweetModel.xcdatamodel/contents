@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Geo" representedClassName="Geo" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longituted" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="tweet" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Tweet" inverseName="geo" inverseEntity="Tweet" syncable="YES"/>
+        <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="geo" inverseEntity="TwitterUser" syncable="YES"/>
+    </entity>
+    <entity name="Image" representedClassName="Image" syncable="YES">
+        <attribute name="localPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remotePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnailPath" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="profileImage" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Tweet" inverseName="profileImage" inverseEntity="Tweet" syncable="YES"/>
+        <relationship name="tweetImage" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Tweet" inverseName="tweetImage" inverseEntity="Tweet" syncable="YES"/>
+        <relationship name="userProfileImage" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="profileImage" inverseEntity="TwitterUser" syncable="YES"/>
+    </entity>
+    <entity name="Tweet" representedClassName="Tweet" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="favorited" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="hastags" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="linkedURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="placeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="retweeted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="tweetId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urls" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="geo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Geo" inverseName="tweet" inverseEntity="Geo" syncable="YES"/>
+        <relationship name="profileImage" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="profileImage" inverseEntity="Image" syncable="YES"/>
+        <relationship name="tweetImage" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="tweetImage" inverseEntity="Image" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="tweet" inverseEntity="TwitterUser" syncable="YES"/>
+    </entity>
+    <entity name="TwitterUser" representedClassName="TwitterUser" syncable="YES">
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userRealName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="geo" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Geo" inverseName="user" inverseEntity="Geo" syncable="YES"/>
+        <relationship name="profileImage" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="userProfileImage" inverseEntity="Image" syncable="YES"/>
+        <relationship name="tweet" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Tweet" inverseName="user" inverseEntity="Tweet" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Geo" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Image" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="Tweet" positionX="160" positionY="192" width="128" height="270"/>
+        <element name="TwitterUser" positionX="160" positionY="192" width="128" height="150"/>
+    </elements>
+</model>

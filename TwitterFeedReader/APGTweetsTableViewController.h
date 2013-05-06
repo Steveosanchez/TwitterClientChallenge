@@ -1,5 +1,5 @@
 //
-//  APGViewController.h
+//  APGTweetsTableViewController.h
 //  TwitterFeedReader
 //
 //  Created by Steve_Sanchez on 5/5/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface APGViewController : UIViewController
+@interface APGTweetsTableViewController : UITableViewController
 
 @end

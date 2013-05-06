@@ -11,4 +11,12 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import "CPTOperationAndRunLoopManager.h"
+    #import "CPTNetworkRetryOperation.h"
+    #import <Social/Social.h>
+    #import "CPTDataAccess.h"
+    #import "Constants.h"
+    #import <QuartzCore/QuartzCore.h>
+    #import "APGAppDelegate.h"
 #endif
